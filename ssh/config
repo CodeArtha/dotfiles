@@ -1,0 +1,49 @@
+Host *
+	AddKeysToAgent yes
+	IdentitiesOnly yes
+
+Host github.com
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/codeartha_2548_rsa
+	Port 22	
+Host bitbucket.org
+    HostName bitbucket.org
+    User git
+    IdentityFile ~/.ssh/codeartha_2548_rsa
+    Port 22
+
+Host proxmox
+	HostName 172.31.31.200
+	User root
+	IdentityFile ~/.ssh/root_proxmox_rsa
+
+Host nextcloud
+	HostName 172.31.31.202
+	User root
+	IdentityFile ~/.ssh/root_CT101_rsa
+
+Host proxy
+	HostName 172.31.31.201
+	User root
+	IdentityFile ~/.ssh/root_CT102_rsa
+
+Host database
+	HostName 172.31.31.203
+	User root
+	IdentityFile ~/.ssh/root_CT104_rsa
+
+Host polr
+	HostName 172.31.31.204
+	User root
+	IdentityFile ~/.ssh/root_CT103_rsa
+
+Host vpn
+	HostName 172.31.31.205
+	User root
+	IdentityFile ~/.ssh/root_CT105_rsa
+
+Host vpn-luci
+	HostName 172.31.31.205
+	User lucifer
+	IdentityFile ~/.ssh/lucifer_CT105_rsa
