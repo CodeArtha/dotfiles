@@ -17,4 +17,3 @@ done
 # Cleaning up to remove duplicates
 cat $exlist | sort -u | uniq -u > /tmp/nc_uniq
 mv /tmp/nc_uniq $exlist
-
