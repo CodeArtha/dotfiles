@@ -18,6 +18,12 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+-- added by TTesseract
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+
+
+
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -228,6 +234,9 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            volume_widget{
+                widget_type = 'icon_and_text'
+            },
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -572,6 +581,13 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
+-- wirelessStatus widget pressed function - open terminal and start `nmtui`
+--beautiful.wirelessStatus.pressed = function(self, button)
+    --if button == 1 then  -- left mouse click
+        --awful.spawn(terminal.." -e nmtui")
+    --end
+--end
+
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
@@ -584,4 +600,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart application
 awful.spawn.with_shell("compton")
 awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("nextcloud-client")
+awful.spawn.with_shell("keepassxc")
+
 
